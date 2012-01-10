@@ -1,5 +1,3 @@
-%define		Werror_cflags %nil
-
 Name:		librouteros
 Version:	1.1.2
 Release:	1
