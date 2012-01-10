@@ -7,6 +7,7 @@ Group:		System/Libraries
 Url:		http://verplant.org/librouteros
 Source0:	http://verplant.org/librouteros/files/librouteros-%{version}.tar.bz2
 Patch0:		disable_werror.patch
+BuildRequires:	libgcrypt-devel
 
 %description
 librouteros (or libRouterOS) is a C library to communicate 
