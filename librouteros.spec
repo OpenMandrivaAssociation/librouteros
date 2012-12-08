@@ -1,6 +1,6 @@
 Name:		librouteros
 Version:	1.1.2
-Release:	1
+Release:	2
 Summary:	Library for accessing MikroTik's RouterOS via its API
 License:	GPLv2+
 Group:		System/Libraries
@@ -25,7 +25,8 @@ Group: System/Libraries
 
 %description -n %{libname}
 librouteros (or libRouterOS) is a C library to communicate 
-with network devices by MikroTik running their Linux-based operating system RouterOS.
+with network devices by MikroTik running their Linux-based
+operating system RouterOS.
 
 %files -n %{libname}
 %{_libdir}/*.so.%{major}*
@@ -73,3 +74,12 @@ find %{buildroot} -type f -name '*.la' -exec rm -f {} \;
 %{_bindir}/ros
 %{_mandir}/man1/ros.1.*
 %{_mandir}/man3/librouteros.3.*
+
+
+%changelog
+* Tue Jan 10 2012 Alexander Khrukin <akhrukin@mandriva.org> 1.1.2-1
++ Revision: 759417
+- BR gcrypt
+- Werror flags not needed
+- imported package librouteros
+
