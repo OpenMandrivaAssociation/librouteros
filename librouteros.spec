@@ -1,52 +1,41 @@
+%define major	0
+%define libname %mklibname routeros %{major}
+%define devname %mklibname routeros -d
+
+Summary:	Library for accessing MikroTik's RouterOS via its API
 Name:		librouteros
 Version:	1.1.2
 Release:	2
-Summary:	Library for accessing MikroTik's RouterOS via its API
 License:	GPLv2+
 Group:		System/Libraries
 Url:		http://verplant.org/librouteros
-Source0:	http://verplant.org/librouteros/files/librouteros-%{version}.tar.bz2
+Source0:	http://verplant.org/librouteros/files/%{name}-%{version}.tar.bz2
 Patch0:		disable_werror.patch
-BuildRequires:	libgcrypt-devel
+BuildRequires:	pkgconfig(libgcrypt)
 
 %description
 librouteros (or libRouterOS) is a C library to communicate 
 with network devices by MikroTik running their Linux-based 
 operating system RouterOS.
 
-#------------------------------------------------------
-
-%define major 0
-%define libname %mklibname routeros %{major}
-
 %package -n %{libname}
-Summary: Files for developing applications that use librouteros
-Group: System/Libraries
+Summary:	Files for developing applications that use librouteros
+Group:		System/Libraries
 
 %description -n %{libname}
 librouteros (or libRouterOS) is a C library to communicate 
 with network devices by MikroTik running their Linux-based
 operating system RouterOS.
 
-%files -n %{libname}
-%{_libdir}/*.so.%{major}*
-
-
-%define develname %mklibname routeros -d
-
-%package -n %{develname}
+%package -n %{devname}
 Summary:	Files for developing applications that use librouteros
 Group:		Development/C
 Provides:	routeros-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}-%{release}
-Obsoletes:	routeros-devel < %{version}
 
-
-%description -n %{develname}
+%description -n %{devname}
 The header files and libtool library for
 developing applications that use librouteros.
-
-#------------------------------------------------------
 
 %prep
 %setup -q
@@ -54,32 +43,23 @@ developing applications that use librouteros.
 autoreconf -fi
 
 %build
-%configure2_5x
+%configure2_5x --disable-static
 
 %make
 
 %install
 %makeinstall_std
-find %{buildroot} -type f -name '*.la' -exec rm -f {} \;
-
-
-%files -n %{develname}
-%doc README ChangeLog NEWS
-%{_includedir}/*
-%{_libdir}/*.a
-%{_libdir}/*.so
-
 
 %files
 %{_bindir}/ros
 %{_mandir}/man1/ros.1.*
+
+%files -n %{libname}
+%{_libdir}/librouteros.so.%{major}*
+
+%files -n %{devname}
+%doc README ChangeLog NEWS
+%{_includedir}/*
+%{_libdir}/*.so
 %{_mandir}/man3/librouteros.3.*
-
-
-%changelog
-* Tue Jan 10 2012 Alexander Khrukin <akhrukin@mandriva.org> 1.1.2-1
-+ Revision: 759417
-- BR gcrypt
-- Werror flags not needed
-- imported package librouteros
 
