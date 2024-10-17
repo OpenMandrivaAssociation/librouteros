@@ -8,7 +8,7 @@ Version:	1.1.2
 Release:	13
 License:	GPLv2+
 Group:		System/Libraries
-Url:		http://verplant.org/librouteros
+Url:		https://verplant.org/librouteros
 Source0:	http://verplant.org/librouteros/files/%{name}-%{version}.tar.bz2
 Patch0:		disable_werror.patch
 BuildRequires:	pkgconfig(libgcrypt)
