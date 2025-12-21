@@ -11,6 +11,11 @@ Group:		System/Libraries
 Url:		https://verplant.org/librouteros
 Source0:	http://verplant.org/librouteros/files/%{name}-%{version}.tar.bz2
 Patch0:		disable_werror.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(libgcrypt)
 
 %description
