@@ -4,8 +4,8 @@
 
 Summary:	Library for accessing MikroTik's RouterOS via its API
 Name:		librouteros
-Version:	1.1.2
-Release:	13
+Version:	1.1.3
+Release:	1
 License:	GPLv2+
 Group:		System/Libraries
 Url:		https://verplant.org/librouteros
@@ -44,7 +44,7 @@ developing applications that use librouteros.
 
 %prep
 %setup -q
-%patch0 -p0
+%patch -P 0 -p0
 autoreconf -fi
 
 %build
